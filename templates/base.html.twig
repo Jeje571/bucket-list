@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <title>{% block title %}TP !{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/favicon.png') }}">
         {% block stylesheets %}
         {% endblock %}
 
@@ -12,6 +12,24 @@
         {% endblock %}
     </head>
     <body>
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }} text-danger text-center" >
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <header>
+            <h2 class="bg-light p-2 d-inline-block"><img src="{{ asset('img/logo.png') }}" alt="" >  Bucket-List</h2>
+            {% include "_navbar.html.twig" %}
+        </header>
+
+        <main>
         {% block body %}{% endblock %}
+        </main>
+
+        <footer>
+            <div>&copy; Bucket-List {{ "now" |date('Y') }}</div>
+        </footer>
     </body>
 </html>
