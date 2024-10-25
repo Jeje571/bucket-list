@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Creer un voeu</h1>
+
+
+    {{ form_start(wishForm) }}
+    {{ form_widget(wishForm) }}
+    <button class ="btn btn-primary">Enregistrer</button>
+    {{ form_end(wishForm) }}
+
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | Créer
+{% endblock %}
+

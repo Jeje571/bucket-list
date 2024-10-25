@@ -1,6 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="d-flex justify-content-center mt-5">
+    <div class="bg-white p-4 rounded shadow" style="max-width: 800px; width: 100%;">    <h1>Détail du voeu: {{ wish.title }}</h1>
+        <ul class="">
+            <li>Titre: {{ wish.title }}</li>
+            {% if  wish.description  is not null %}
+                <li>Description: {{ wish.description }}</li>
+            {% endif %}
+            <li>Auteur: {{ wish.author }}</li>
+            <li>Date de création: {{ wish.dateCreated | date('Y-m-d')}}</li>
+            {% if  wish.dateUpdated  is not null %}
+                <li>Date de modification: {{ wish.dateUpdated | date('Y-m-d') }}</li>
+            {% endif %}
+            {% if  wish.pathImage  is not null %}
+                <li>Image: <img class="w-50" src="{{ asset('uploads/images/wish/' ~ wish.pathImage) }}" alt="{{ wish.title }}"></li>
+            {% endif %}
+            <br>
+            <a class="btn btn-light" href="{{ path('wishes_modify_wish', {'id': wish.id}) }}" title="Modifier">Modifier</a>
+            <form class="d-inline" method="post" action="{{ path('wishes_delete_wish', {id: wish.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce souhait ?');">
+                <button class="btn btn-danger" formmethod="post" type="submit" >Supprimer</button>
+            </form>
+
+        </ul>
+    </div>
+</div>
 
 
 {% endblock %}

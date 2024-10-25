@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Modifier le souhait</h1>
+    <div>
+        {{ form_start(wishForm) }}
+        {{ form_widget(wishForm) }}
+        {% if  wish.pathImage  is not null %}
+            <li>Image actuelle: <img class="w-" src="{{ asset('uploads/images/wish/' ~ wish.pathImage) }}" alt="{{ wish.title }}"></li>
+        {% endif %}
+        <button class="btn btn-primary btn-sm">Modifier</button>
+        {{ form_end(wishForm) }}
+    </div>
+
+{% endblock %}
+
+{% block title %}
+ {{ parent() }} | Modifier {{ wish.title }}
+{% endblock %}
+

@@ -6,6 +6,16 @@
 
 {% block body %}
     <h1>Liste des voeux</h1>
-    {#  todo : afficher les voeux #}
+    <ul>
+        {% for wish in allWishes %}
+            <li>
+                <a href="{{path('wishes_wish_detail',{ id: wish.id })}}">  Titre :  {{ wish.title }}</a>
+            </li>
+        {% else %}
+            <p>
+                Pas de voeux présent, soyez le premier!!
+            </p>
+        {% endfor %}
+    </ul>
 
 {% endblock %}
